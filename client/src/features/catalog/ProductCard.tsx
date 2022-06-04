@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Product } from "../../app/models/product";
 import { Avatar, CardHeader, CardMedia } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 interface Props {
   product: Product;
@@ -38,10 +39,19 @@ export default function ProductCard({ product }: Props) {
           {product.brand} / {product.type}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">View</Button>
+
+      <CardActions sx={
+        {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }
+      }>
+        <Button component={Link} to={`/catalog/${product.id}`} size="small">View</Button>
         <Button size="small">Add to Cart</Button>
       </CardActions>
+
     </Card>
   )
 }
