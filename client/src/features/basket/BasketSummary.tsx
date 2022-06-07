@@ -1,4 +1,5 @@
-import { TableContainer, Paper, Table, TableBody, TableRow, TableCell } from "@mui/material";
+import { TableContainer, Paper, Table, TableBody, TableRow, TableCell, Button } from "@mui/material"
+import { Link } from "react-router-dom";
 import { useStoreContext } from "../../app/context/StoreContext";
 import { currencyFormat } from "../../app/util/util";
 
@@ -32,6 +33,16 @@ export default function BasketSummary() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Button
+        component={Link}
+        to='/checkout'
+        variant='contained'
+        size='large'
+        fullWidth
+        disabled={subtotal <= 0}
+      >
+        Checkout
+      </Button>
     </>
   )
 }
