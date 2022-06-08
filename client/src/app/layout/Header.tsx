@@ -9,9 +9,9 @@ interface Props {
 };
 
 const pageLinks = [
-  { title: 'catalog', path: '/catalog' },
-  { title: 'about', path: '/about' },
-  { title: 'contact', path: '/contact' }
+  { title: 'products', path: '/catalog' },
+  { title: 'about us', path: '/about' },
+  { title: 'contact us', path: '/contact' }
 ];
 
 const accountLinks = [
@@ -23,6 +23,7 @@ const navStyles = {
   color: 'inherit',
   typography: 'h6',
   textDecoration: 'none',
+  whiteSpace: 'nowrap',
   '&:hover':
   {
     color: 'grey.500'
@@ -69,6 +70,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
               to={path}
               key={path}
               sx={navStyles}
+
             >
               {title.toUpperCase()}
             </ListItem>

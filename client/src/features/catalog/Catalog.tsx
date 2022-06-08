@@ -1,11 +1,11 @@
-import { Divider, FormLabel, Grid, Pagination, Paper, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Divider, Grid, ListItemText, Paper } from "@mui/material";
 import { useEffect } from "react";
+import AppPagination from "../../app/components/AppPagination";
 import CheckboxButtonGroup from "../../app/components/CheckboxButtonGroup";
 import RadioButtonGroup from "../../app/components/RadioButtonGroup";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
-import { fetchFilters, fetchProductsAsync, productSelectors, setProductParams } from "./catalogSlice";
+import { fetchFilters, fetchProductsAsync, productSelectors, setPageNumber, setProductParams } from "./catalogSlice";
 import ProductList from "./ProductList";
 import ProductSearch from "./ProductSearch";
 
@@ -18,7 +18,7 @@ const sortOptions =
 
 export default function Catalog() {
   const products = useAppSelector(productSelectors.selectAll);
-  const { productsLoaded, status, filtersLoaded, brands, types, productParams } = useAppSelector(state => state.catalog);
+  const { productsLoaded, filtersLoaded, brands, types, productParams, metaData } = useAppSelector(state => state.catalog);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -29,11 +29,12 @@ export default function Catalog() {
     if (!filtersLoaded) dispatch(fetchFilters());
   }, [filtersLoaded, dispatch]);
 
-  if (status.includes('pending')) return <LoadingComponent message='Loading products...' />;
+  if (!filtersLoaded)
+    return <LoadingComponent message='Loading products...' />;
 
   return (
     <>
-      <Grid container spacing={4}>
+      <Grid container columnSpacing={4}>
         <Grid item xs={3}>
           <Paper sx={{ mb: 2 }}>
             <ProductSearch />
@@ -47,15 +48,15 @@ export default function Catalog() {
           </Paper>
           <Paper sx={{ mb: 2, p: 2 }}>
             Filter by:
-            <Divider sx={{ mt: 1, mb: 1 }} />
-            <FormLabel id="checkbox-buttons-group-label">Brands</FormLabel>
+            <Divider sx={{ mt: 2, mb: 1 }} />
+            <ListItemText primary="Brands" />
             <CheckboxButtonGroup
               items={brands}
               checked={productParams.brands}
               onChange={(items: string[]) => dispatch(setProductParams({ brands: items }))}
             />
             <Divider sx={{ mt: 1, mb: 1 }} />
-            <FormLabel id="checkbox-buttons-group-label">Types</FormLabel>
+            <ListItemText primary="Types" />
             <CheckboxButtonGroup
               items={types}
               checked={productParams.types}
@@ -67,22 +68,15 @@ export default function Catalog() {
           <ProductList products={products} />
         </Grid>
         <Grid item xs={3} />
-        <Grid item xs={9}>
-          <Box display='flex' flexDirection='column' justifyContent='space-between' alignItems='center' >
-            <Typography sx={{ mb: 2 }}>
-              Displaying 1-6 of 20 items
-            </Typography>
-            <Pagination
-              color='secondary'
-              size='large'
-              count={10}
-              page={2}
+        <Grid item xs={9} sx={{ pb: 5 }}>
+          {metaData &&
+            <AppPagination
+              metaData={metaData}
+              onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))}
             />
-          </Box>
+          }
         </Grid>
-
       </Grid>
-
     </>
   )
 }
