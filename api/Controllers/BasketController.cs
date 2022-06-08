@@ -24,7 +24,7 @@ namespace api.Controllers
     [HttpGet(Name = "GetBasket")]
     public async Task<ActionResult<BasketDTO>> GetBasket()
     {
-      var basket = await RetriveBasket();
+      var basket = await RetrieveBasket();
 
       if (basket == null) return NotFound();
 
@@ -38,13 +38,13 @@ namespace api.Controllers
     public async Task<ActionResult<BasketDTO>> AddItemToBasket(int productId, int quantity)
     {
       // get basket or create basket
-      var basket = await RetriveBasket();
+      var basket = await RetrieveBasket();
       if (basket == null)
         basket = CreateBasket();
       // get product
       var product = await _context.Products.FindAsync(productId);
       if (product == null)
-        return NotFound();
+        return BadRequest(new ProblemDetails { Title = "Product Not Found" });
       // add item
       basket.AddItem(product, quantity);
       // save changes
@@ -59,7 +59,7 @@ namespace api.Controllers
     public async Task<ActionResult> RemoveBasketItem(int productId, int quantity)
     {
       // get basket
-      var basket = await RetriveBasket();
+      var basket = await RetrieveBasket();
       if (basket == null)
         return NotFound();
 
@@ -75,7 +75,7 @@ namespace api.Controllers
 
 
 
-    private async Task<Basket> RetriveBasket()
+    private async Task<Basket> RetrieveBasket()
     {
       return await _context.Baskets
       .Include(i => i.Items)
