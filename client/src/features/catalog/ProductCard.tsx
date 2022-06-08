@@ -37,6 +37,8 @@ export default function ProductCard({ product }: Props) {
         sx={{ height: 140, backgroundSize: 'contain', bgcolor: 'primary.light' }}
         image={product.picUrl}
         title={product.name}
+        component={Link}
+        to={`/catalog/${product.id}`}
       />
       <CardContent>
         <Typography gutterBottom color='secondary' variant="h5">

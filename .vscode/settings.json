@@ -3,6 +3,7 @@
     "bgcolor",
     "browserslist",
     "reduxjs",
+    "signin",
     "toastify",
     "upsert"
   ]
