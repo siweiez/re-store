@@ -1,4 +1,4 @@
-import { Divider, Grid, ListItemText, Paper } from "@mui/material";
+import { Divider, Grid, Link, Paper } from "@mui/material";
 import { useEffect } from "react";
 import AppPagination from "../../app/components/AppPagination";
 import CheckboxButtonGroup from "../../app/components/CheckboxButtonGroup";
@@ -36,35 +36,53 @@ export default function Catalog() {
     <>
       <Grid container columnSpacing={4}>
         <Grid item xs={3}>
-          <Paper sx={{ mb: 2 }}>
+          <Paper variant="outlined">
             <ProductSearch />
-          </Paper>
-          <Paper sx={{ mb: 2, p: 2 }}>
-            <RadioButtonGroup
-              selectedValue={productParams.sortBy}
-              options={sortOptions}
-              onChange={(event) => dispatch(setProductParams({ sortBy: event.target.value }))}
-            />
-          </Paper>
-          <Paper sx={{ mb: 2, p: 2 }}>
-            Filter by:
-            <Divider sx={{ mt: 2, mb: 1 }} />
-            <ListItemText primary="Brands" />
-            <CheckboxButtonGroup
-              items={brands}
-              checked={productParams.brands}
-              onChange={(items: string[]) => dispatch(setProductParams({ brands: items }))}
-            />
+            <Divider />
+            <Grid sx={{ m: 2 }} >
+              <Link
+                href=""
+                underline="hover"
+                color="inherit"
+                onClick={() => dispatch(setProductParams({ brands: [], types: [] }))}>
+                {'All Products'}
+              </Link>
+            </Grid>
+            <Divider />
+            <Grid sx={{ fontWeight: '500', ml: 2, mt: 2 }}>
+              Sort by
+            </Grid>
+            <Grid sx={{ ml: 2, mt: 0.5 }} >
+              <RadioButtonGroup
+                selectedValue={productParams.sortBy}
+                options={sortOptions}
+                onChange={(event) => dispatch(setProductParams({ sortBy: event.target.value }))}
+              />
+            </Grid>
             <Divider sx={{ mt: 1, mb: 1 }} />
-            <ListItemText primary="Types" />
-            <CheckboxButtonGroup
-              items={types}
-              checked={productParams.types}
-              onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
-            />
+            <Grid sx={{ ml: 2, mt: 2 }} >
+              <Grid sx={{ fontWeight: '500' }}>
+                Brand
+              </Grid>
+              <CheckboxButtonGroup
+                items={brands}
+                checked={productParams.brands}
+                onChange={(items: string[]) => dispatch(setProductParams({ brands: items }))}
+              />
+            </Grid>
+            <Grid sx={{ ml: 2, mt: 1.5, mb: 1.1 }} >
+              <Grid sx={{ fontWeight: '500' }}>
+                Type
+              </Grid>
+              <CheckboxButtonGroup
+                items={types}
+                checked={productParams.types}
+                onChange={(items: string[]) => dispatch(setProductParams({ types: items }))}
+              />
+            </Grid>
           </Paper>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={9} sx={{ pb: 5 }}>
           <ProductList products={products} />
         </Grid>
         <Grid item xs={3} />

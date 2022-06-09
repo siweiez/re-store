@@ -45,8 +45,15 @@ function App() {
     palette: {
       mode: paletteType,
       background: {
-        default: paletteType === 'light' ? '#eaeaea' : '#121212'
-      }
+        default: paletteType === 'light' ? '#ffffff' : '#121212'
+      },
+      primary: {
+        main: '#5c6bc0',
+        light: '#b2b9e1'
+      },
+      secondary: {
+        main: '#7e57c2'
+      },
     }
   });
 

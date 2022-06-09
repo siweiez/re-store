@@ -7,8 +7,8 @@ export default function NotFound() {
       <Typography gutterBottom variant='h3'>
         Oops! We could not find what you are looking for...
       </Typography>
-      <Divider />
-      <Button fullWidth component={Link} to='/catalog'>
+      <Divider sx={{ mt: 3, mb: 3 }} />
+      <Button fullWidth size='large' component={Link} to=''>
         Go back to the store
       </Button>
     </Container>
