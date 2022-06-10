@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, Grid, Skeleton } from "@mui/material";
 
 export default function ProductCardSkeleton() {
   return (
-    <Grid item xs component={Card}>
+    <Grid item xs component={Card} variant="outlined">
       <CardHeader
         avatar={
           <Skeleton animation="wave" variant="circular" width={40} height={40} />
