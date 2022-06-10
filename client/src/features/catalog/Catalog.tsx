@@ -43,8 +43,7 @@ export default function Catalog() {
               <Link
                 href=""
                 underline="hover"
-                color="inherit"
-                onClick={() => dispatch(setProductParams({ brands: [], types: [] }))}>
+                color="inherit">
                 {'All Products'}
               </Link>
             </Grid>

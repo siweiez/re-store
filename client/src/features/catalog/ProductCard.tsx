@@ -31,7 +31,6 @@ export default function ProductCard({ product }: Props) {
         titleTypographyProps={{
           sx: { fontWeight: 'bold', color: 'primary.main' }
         }}
-
       />
       <CardMedia
         sx={{ height: 140, backgroundSize: 'contain', bgcolor: 'primary.light' }}
@@ -60,7 +59,7 @@ export default function ProductCard({ product }: Props) {
         <Button component={Link} to={`/catalog/${product.id}`} size="small">View</Button>
 
         <LoadingButton
-          loading={status.includes('pendingAddItem' + product.id)}
+          loading={status === 'pendingAddItem' + product.id}
           size="small"
           onClick={() => dispatch(addBasketItemAsync({ productId: product.id }))}>
           Add to Cart
