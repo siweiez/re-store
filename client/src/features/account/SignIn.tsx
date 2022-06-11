@@ -70,10 +70,11 @@ export default function SignIn() {
         >
           Sign In
         </LoadingButton>
-        <Grid container>
+        <Grid container justifyContent='end'>
           <Grid item>
+            Don't have an account?&nbsp;&nbsp;
             <Link to='/register'>
-              {"Don't have an account? Sign up here"}
+              {"Sign up"}
             </Link>
           </Grid>
         </Grid>

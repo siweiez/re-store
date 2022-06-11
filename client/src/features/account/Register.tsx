@@ -102,10 +102,11 @@ export default function Register() {
         >
           Register
         </LoadingButton>
-        <Grid container>
+        <Grid container justifyContent='end'>
           <Grid item>
+            Already have an account?&nbsp;&nbsp;
             <Link to='/signin'>
-              {"Already have an account? Sign in here"}
+              {"Sign in"}
             </Link>
           </Grid>
         </Grid>

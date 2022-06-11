@@ -22,7 +22,7 @@ export default function ProductSearch() {
       <Box display='flex' flexDirection='row'>
         <TextField
           label='Search product...'
-          variant='outlined'
+          variant='filled'
           fullWidth
           value={searchTermInput}
           onChange={handleInputChange}
