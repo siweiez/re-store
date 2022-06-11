@@ -83,7 +83,9 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
           </IconButton>
 
           {user ? (
-            <SignedInMenu />
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+              <SignedInMenu />
+            </Box>
           ) : (
             <List sx={{ display: 'flex' }}>
               {accountLinks.map(({ title, path }) => (

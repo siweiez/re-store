@@ -1,5 +1,6 @@
-import { Button, Fade, Menu, MenuItem } from "@mui/material";
+import { Button, MenuItem, Popover } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { signOut } from "../../features/account/accountSlice";
 import { clearBasket } from "../../features/basket/basketSlice";
 import { useAppDispatch, useAppSelector } from "../store/configureStore";
@@ -25,19 +26,26 @@ export default function SignedInMenu() {
       >
         {user?.email}
       </Button>
-      <Menu
+      <Popover
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        TransitionComponent={Fade}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My orders</MenuItem>
-        <MenuItem onClick={() => {
+        <MenuItem sx={{ justifyContent: 'flex-end', m: 0.8 }} onClick={handleClose}>Profile</MenuItem>
+        <MenuItem sx={{ justifyContent: 'flex-end', m: 0.8 }} component={Link} to='/orders'>Orders</MenuItem>
+        <MenuItem sx={{ justifyContent: 'flex-end', m: 0.8 }} onClick={() => {
           dispatch(signOut());
           dispatch(clearBasket());
-        }}>Log out</MenuItem>
-      </Menu>
+        }}>Sign out</MenuItem>
+      </Popover>
     </>
   );
 }
