@@ -8,7 +8,6 @@ import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
 import ContactPage from "../../features/contact/ContactPage";
-import HomePage from "../../features/home/HomePage";
 import 'react-toastify/dist/ReactToastify.css';
 import Header from "./Header";
 import ServerError from "../errors/ServerError";
@@ -23,6 +22,7 @@ import { fetchCurrentUser } from "../../features/account/accountSlice";
 import PrivateRoute from "./PrivateRoute";
 import OrdersPage from "../../features/orders/OrdersPage";
 import CheckoutWrapper from "../../features/checkout/CheckoutWrapper";
+import HomePage from "../../features/home/HomePage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -76,22 +76,24 @@ function App() {
       <ToastContainer position='bottom-right' hideProgressBar />
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
-      <Container>
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/catalog' component={Catalog} />
-          <Route path='/catalog/:id' component={ProductDetails} />
-          <Route path='/about' component={AboutPage} />
-          <Route path='/contact' component={ContactPage} />
-          <Route path='/server-error' component={ServerError} />
-          <Route path='/basket' component={BasketPage} />
-          <PrivateRoute path='/checkout' component={CheckoutWrapper} />
-          <Route path='/signin' component={SignIn} />
-          <PrivateRoute path='/orders' component={OrdersPage} />
-          <Route path='/register' component={Register} />
-          <Route component={NotFound} />
-        </Switch>
-      </Container>
+      <Route exact path='/' component={HomePage} />
+      <Route path={'/(.+)'} render={() => (
+        <Container sx={{ mt: 4 }}>
+          <Switch>
+            <Route exact path='/catalog' component={Catalog} />
+            <Route path='/catalog/:id' component={ProductDetails} />
+            <Route path='/about' component={AboutPage} />
+            <Route path='/contact' component={ContactPage} />
+            <Route path='/server-error' component={ServerError} />
+            <Route path='/basket' component={BasketPage} />
+            <PrivateRoute path='/checkout' component={CheckoutWrapper} />
+            <Route path='/signin' component={SignIn} />
+            <PrivateRoute path='/orders' component={OrdersPage} />
+            <Route path='/register' component={Register} />
+            <Route component={NotFound} />
+          </Switch>
+        </Container>
+      )} />
     </ThemeProvider>
   );
 }
