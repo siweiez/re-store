@@ -9,16 +9,6 @@ interface Props {
   handleThemeChange: () => void;
 };
 
-const pageLinks = [
-  { title: 'products', path: '/catalog' },
-  { title: 'about us', path: '/about' },
-  { title: 'contact us', path: '/contact' }
-];
-
-const accountLinks = [
-  { title: 'sign in', path: '/signin' }
-];
-
 const navStyles = {
   color: 'inherit',
   typography: 'h6',
@@ -57,22 +47,28 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
             to='/' exact
             sx={navStyles}
           >
-            RE-STORE
+            A STORE
           </Typography>
           <Switch checked={darkMode} onChange={handleThemeChange} />
         </Box>
 
         <List sx={{ display: 'flex' }}>
-          {pageLinks.map(({ title, path }) => (
-            <ListItem
-              component={NavLink}
-              to={path}
-              key={path}
-              sx={navStyles}
-            >
-              {title.toUpperCase()}
-            </ListItem>
-          ))}
+          <ListItem
+            component={NavLink}
+            to='/catalog'
+            key='/catalog'
+            sx={navStyles}
+          >
+            PRODUCTS
+          </ListItem>
+          <ListItem
+            component={NavLink}
+            to='/about'
+            key='/about'
+            sx={navStyles}
+          >
+            ABOUT US
+          </ListItem>
         </List>
 
         <Box display='flex' alignItems='center'>
@@ -88,16 +84,14 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
             </Box>
           ) : (
             <List sx={{ display: 'flex' }}>
-              {accountLinks.map(({ title, path }) => (
-                <ListItem
-                  component={NavLink}
-                  to={path}
-                  key={path}
-                  sx={navStyles}
-                >
-                  {title.toUpperCase()}
-                </ListItem>
-              ))}
+              <ListItem
+                component={NavLink}
+                to='/signin'
+                key='/signin'
+                sx={navStyles}
+              >
+                SIGN IN
+              </ListItem>
             </List>
           )}
         </Box>

@@ -39,7 +39,6 @@ export default function SignedInMenu() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem sx={{ justifyContent: 'flex-end', m: 0.8 }} onClick={handleClose}>Profile</MenuItem>
         <MenuItem sx={{ justifyContent: 'flex-end', m: 0.8 }} component={Link} to='/orders'>Orders</MenuItem>
         <MenuItem sx={{ justifyContent: 'flex-end', m: 0.8 }} onClick={() => {
           dispatch(signOut());

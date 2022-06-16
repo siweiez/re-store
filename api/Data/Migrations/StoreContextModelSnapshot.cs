@@ -191,14 +191,14 @@ namespace api.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "77917b7e-4718-47d2-9aef-fecf7cf912b0",
+                            ConcurrencyStamp = "eb32a587-d74e-4bb5-a770-ba127e05ff47",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "fc697241-5418-422e-92ae-474e5bcb342c",
+                            ConcurrencyStamp = "572659cc-c8cd-4121-bf11-37f2fe4392be",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -460,7 +460,8 @@ namespace api.Data.Migrations
                                 .HasForeignKey("OrderId");
                         });
 
-                    b.Navigation("ShippingAddress");
+                    b.Navigation("ShippingAddress")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("api.Entities.OrderAggregate.OrderItem", b =>
