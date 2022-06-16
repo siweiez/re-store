@@ -1,6 +1,7 @@
 using System.Linq;
 using api.DTOs;
 using api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Extensions
 {
@@ -12,6 +13,8 @@ namespace api.Extensions
       {
         Id = basket.Id,
         BuyerId = basket.BuyerId,
+        PaymentIntentId = basket.PaymentIntentId,
+        ClientSecret = basket.ClientSecret,
         Items = basket.Items.Select(item => new BasketItemDTO
         {
           ProductId = item.ProductId,
@@ -23,6 +26,13 @@ namespace api.Extensions
           Quantity = item.Quantity
         }).ToList()
       };
+    }
+
+    public static IQueryable<Basket> RetrieveBasketWithItems(this IQueryable<Basket> query, string BuyerId)
+    {
+      return query.Include(i => i.Items)
+      .ThenInclude(p => p.Product)
+      .Where(b => b.BuyerId == BuyerId);
     }
   }
 }

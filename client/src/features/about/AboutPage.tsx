@@ -1,37 +1,36 @@
-import { Container, Typography, ButtonGroup, Button, Alert, AlertTitle, List, ListItem, ListItemText } from "@mui/material";
-import { useState } from "react";
-import agent from "../../app/api/agent";
+import { Container, Divider, Typography } from "@mui/material";
+
 
 export default function AboutPage() {
-  const [validationErrors, setValidationErrors] = useState<string[]>([]);
-
-  function getValidationError() {
-    agent.TestErrors.getValidationError()
-      .then(() => console.log('not shown'))
-      .catch(error => setValidationErrors(error));
-  }
 
   return (
     <Container>
-      <Typography gutterBottom variant='h2'>Errors for testing</Typography>
-      <ButtonGroup fullWidth>
-        <Button variant='contained' onClick={() => agent.TestErrors.get400Error().catch(error => console.log(error))}>400</Button>
-        <Button variant='contained' onClick={() => agent.TestErrors.get401Error().catch(error => console.log(error))}>401</Button>
-        <Button variant='contained' onClick={() => agent.TestErrors.get404Error().catch(error => console.log(error))}>404</Button>
-        <Button variant='contained' onClick={() => agent.TestErrors.get500Error().catch(error => console.log(error))}>500</Button>
-        <Button variant='contained' onClick={getValidationError}>Validation</Button>
-      </ButtonGroup>
-      {validationErrors.length > 0 &&
-        <Alert severity='error'>
-          <AlertTitle>Validation Errors</AlertTitle>
-          <List>
-            {validationErrors.map((error) => (
-              <ListItem key={error}>
-                <ListItemText>{error}</ListItemText>
-              </ListItem>
-            ))}
-          </List>
-        </Alert>}
+      <Typography
+        gutterBottom
+        variant='h2'
+        sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
+      >
+        ABOUT US
+      </Typography>
+      <Divider />
+      <Typography
+        variant='h5'
+        sx={{ pt: 3, pl: 3, pr: 3, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
+      >
+        We are a fake company and we sell fake products. This is a fake store that is established in 2045.
+        Thank you.
+      </Typography>
+      <Typography
+        variant='h5'
+        sx={{ p: 3, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.
+      </Typography>
+
     </Container>
   )
 }

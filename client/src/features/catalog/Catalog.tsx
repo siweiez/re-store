@@ -1,4 +1,4 @@
-import { Divider, Grid, Link, Paper } from "@mui/material";
+import { Divider, Grid, Paper } from "@mui/material";
 import { useEffect } from "react";
 import AppPagination from "../../app/components/AppPagination";
 import CheckboxButtonGroup from "../../app/components/CheckboxButtonGroup";
@@ -36,30 +36,22 @@ export default function Catalog() {
     <>
       <Grid container columnSpacing={4}>
         <Grid item xs={3}>
-          <Paper variant="outlined">
+          <Paper variant='outlined' sx={{ mb: 2.2 }} elevation={0}>
             <ProductSearch />
-            <Divider />
-            <Grid sx={{ m: 2 }} >
-              <Link
-                href=""
-                underline="hover"
-                color="inherit">
-                {'All Products'}
-              </Link>
-            </Grid>
-            <Divider />
-            <Grid sx={{ fontWeight: '500', ml: 2, mt: 2 }}>
+          </Paper>
+          <Paper sx={{ pt: 1, pb: 2 }} elevation={0} variant='outlined'>
+            <Grid sx={{ fontWeight: '500', mt: 2, ml: 3 }}>
               Sort by
             </Grid>
-            <Grid sx={{ ml: 2, mt: 0.5 }} >
+            <Grid sx={{ ml: 3, mt: 1 }} >
               <RadioButtonGroup
                 selectedValue={productParams.sortBy}
                 options={sortOptions}
                 onChange={(event) => dispatch(setProductParams({ sortBy: event.target.value }))}
               />
             </Grid>
-            <Divider sx={{ mt: 1, mb: 1 }} />
-            <Grid sx={{ ml: 2, mt: 2 }} >
+            <Divider sx={{ mt: 2, mb: 1 }} />
+            <Grid sx={{ mt: 3, ml: 3, mb: 2 }} >
               <Grid sx={{ fontWeight: '500' }}>
                 Brand
               </Grid>
@@ -69,7 +61,7 @@ export default function Catalog() {
                 onChange={(items: string[]) => dispatch(setProductParams({ brands: items }))}
               />
             </Grid>
-            <Grid sx={{ ml: 2, mt: 1.5, mb: 1.1 }} >
+            <Grid sx={{ ml: 3 }} >
               <Grid sx={{ fontWeight: '500' }}>
                 Type
               </Grid>
