@@ -5,19 +5,17 @@ using api.Data;
 using api.Entities;
 using api.Middlewares;
 using api.Services;
-using api.RequestHelpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-namespace api
+namespace API
 {
   public class Startup
   {
@@ -31,9 +29,8 @@ namespace api
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddControllers();
-      services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
+      services.AddControllers();
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
@@ -50,11 +47,7 @@ namespace api
           {
             new OpenApiSecurityScheme
             {
-              Reference = new OpenApiReference
-              {
-                Type = ReferenceType.SecurityScheme,
-                Id = "Bearer"
-              },
+              Reference = new OpenApiReference{ Type = ReferenceType.SecurityScheme, Id = "Bearer" },
               Scheme = "oauth2",
               Name = "Bearer",
               In = ParameterLocation.Header
@@ -125,8 +118,6 @@ namespace api
       services.AddScoped<TokenService>();
       // use payment service
       services.AddScoped<PaymentService>();
-      // use image service
-      services.AddScoped<ImageService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -142,6 +133,7 @@ namespace api
       }
 
       // app.UseHttpsRedirection();
+
       app.UseRouting();
 
       app.UseDefaultFiles();

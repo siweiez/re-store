@@ -51,7 +51,7 @@ function App() {
         default: paletteType === 'light' ? '#ffffff' : '#121212'
       },
       primary: {
-        main: '#6471be',
+        main: '#5c6bc0',
         light: '#b2b9e1'
       },
       secondary: {

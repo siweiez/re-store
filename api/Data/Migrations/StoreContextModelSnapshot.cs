@@ -148,9 +148,6 @@ namespace api.Data.Migrations
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("PublicId")
-                        .HasColumnType("text");
-
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("integer");
 
@@ -194,14 +191,14 @@ namespace api.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "4653123a-b611-4408-8378-49cd71308df4",
+                            ConcurrencyStamp = "eb32a587-d74e-4bb5-a770-ba127e05ff47",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "f6001366-765b-4ec8-a5f7-c8812688b937",
+                            ConcurrencyStamp = "572659cc-c8cd-4121-bf11-37f2fe4392be",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

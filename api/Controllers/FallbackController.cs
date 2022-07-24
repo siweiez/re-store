@@ -2,7 +2,7 @@ using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace api.Controllers
+namespace API.Controllers
 {
   [AllowAnonymous]
   public class FallbackController : Controller
