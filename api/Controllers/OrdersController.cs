@@ -7,7 +7,6 @@ using api.DTOs;
 using api.Entities;
 using api.Entities.OrderAggregate;
 using api.Extensions;
-using API.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

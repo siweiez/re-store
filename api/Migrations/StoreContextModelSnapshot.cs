@@ -2,20 +2,18 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using api.Data;
 
 #nullable disable
 
-namespace api.Data.Migrations
+namespace api.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20220614215403_PostGresInitial")]
-    partial class PostGresInitial
+    partial class StoreContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,14 +191,14 @@ namespace api.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "eb32a587-d74e-4bb5-a770-ba127e05ff47",
+                            ConcurrencyStamp = "1a90d5b4-3e8b-4c55-b1d8-aaf364f5c89d",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "572659cc-c8cd-4121-bf11-37f2fe4392be",
+                            ConcurrencyStamp = "eccd2a7a-18b6-40c2-9e7a-cf83fcd2abfa",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
