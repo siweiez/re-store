@@ -9,11 +9,11 @@ using api.Data;
 
 #nullable disable
 
-namespace api.Data.Migrations
+namespace api.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20220724064400_PublicIdAdded")]
-    partial class PublicIdAdded
+    [Migration("20220724075836_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -150,9 +150,6 @@ namespace api.Data.Migrations
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("PublicId")
-                        .HasColumnType("text");
-
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("integer");
 
@@ -196,14 +193,14 @@ namespace api.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "4653123a-b611-4408-8378-49cd71308df4",
+                            ConcurrencyStamp = "1a90d5b4-3e8b-4c55-b1d8-aaf364f5c89d",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "f6001366-765b-4ec8-a5f7-c8812688b937",
+                            ConcurrencyStamp = "eccd2a7a-18b6-40c2-9e7a-cf83fcd2abfa",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

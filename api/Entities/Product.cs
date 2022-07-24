@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace api.Entities
 {
   public class Product
@@ -10,6 +15,5 @@ namespace api.Entities
     public string PicUrl { get; set; }
     public string Brand { get; set; }
     public string Type { get; set; }
-    public string PublicId { get; set; }
   }
 }

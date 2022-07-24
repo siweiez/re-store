@@ -8,18 +8,22 @@ export default function AboutPage() {
       <Typography
         gutterBottom
         variant='h2'
-        sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
+        sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', color: 'primary.main' }}
       >
         ABOUT US
       </Typography>
       <Divider />
       <Typography
         variant='h5'
-        sx={{ pt: 3, pl: 3, pr: 3, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
+        sx={{ p: 3, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
       >
-        We are a fake company and we sell fake products. This is a fake store that is established in 2045.
-        Thank you.
+        We are a mock company and we sell mock products.
       </Typography>
+      <div>
+        <img src="/images/hero3.jpg" alt="hero"
+          style={{ display: 'block', width: '100%', maxHeight: 500 }}
+        />
+      </div>
       <Typography
         variant='h5'
         sx={{ p: 3, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
