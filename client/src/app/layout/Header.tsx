@@ -16,11 +16,13 @@ const navStyles = {
   whiteSpace: 'nowrap',
   '&:hover':
   {
-    color: 'grey.500'
+    color: 'white'
   },
   '&.active':
   {
-    color: 'text.secondary'
+    color: 'white',
+    textDecoration: 'underline',
+    textDecorationColor: '#b2b9e1'
   }
 };
 
