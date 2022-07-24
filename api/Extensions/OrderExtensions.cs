@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using api.DTOs;
 using api.Entities.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Extensions
+namespace api.Extensions
 {
   public static class OrderExtensions
   {
